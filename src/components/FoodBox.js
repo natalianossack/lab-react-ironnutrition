@@ -1,19 +1,22 @@
-//<FoodBox food={ {
- // name: "Orange",
- // calories: 85,
- // image: "https://i.imgur.com/abKGOcv.jpg",
- // servings: 1
-//}} />
+import { Card, Col, Button } from 'antd';
 
-function FoodBox ({food, deleteFunc}){
-return (<div className= 'FoodBox'>
-    <h3>{food.name}</h3>
-    <p>calories:{food.calories}</p>
-    <img src="https://i.imgur.com/abKGOcv.jpg" alt="Comida"/>
-    <p>servings: {food.servings}</p>
-    <button onClick={() => deleteFunc(food._id)} className='btn-delete'>Delete</button>
-</div>
-)
+function FoodBox({ food, deleteFood }) {
+  return (
+    <Col>
+      <Card title={food.name} style={{ width: 230, height: 300, margin: 10 }}>
+        <img src={food.image} height= {60} alt={food.name} />
+        <p>Calories:{food.calories}</p>
+        <p>Servings: {food.servings}</p>
+        <p>
+        <b>Total Calories: {food.calories*food.servings}</b> kCal
+        </p>
+          <Button onClick={() => deleteFood(food.name)} className="btn-delete">
+            Delete
+          </Button>
+      </Card>
+    </Col>
+  );
 }
 
 export default FoodBox;
+
